@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 5) do
   end
 
   create_table "taco_trucks", force: :cascade do |t|
-    t.string  "name"
+    t.string "name"
     t.integer "student_id"
     t.integer "taco_id"
   end
