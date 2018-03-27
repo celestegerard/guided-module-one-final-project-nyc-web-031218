@@ -1,3 +1,5 @@
+require 'pry'
+
 class CommandLineInterface
   def hey
     puts "Howdy, what's your name?"
@@ -18,26 +20,41 @@ class CommandLineInterface
   end
 
   def find_student(gets_user_input)
+    stud = Student.find_by(name: gets_user_input)
+  end
+
+
+  def find_student(gets_user_input)
     scholar = gets_user_input.capitalize
     stud = Student.find_by(name: scholar)
   end
 
+  def student
+    puts "#{search_by_name}"
+  end
 
-  # def find_student(gets_user_input)
-  #   stud = Student.find_by(name: gets_user_input)
-  # end
+  def find_tacos(stud)
+    stud.tacos
+  end
 
-  # def student
-  #   puts "#{search_by_name}"
-  # end
+  def show_tacos(tacos)
+    tacos.each do |taco|
+      puts taco.kind
+    end
+  end
+
+
+
+
 
   def run
 
     hey
     greet
     input = gets_user_input
-    find_student(input)
-
+    found_student = find_student(input)
+    students_tacos = find_tacos(found_student)
+    show_tacos(students_tacos)
   end
 
 end
