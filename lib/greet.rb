@@ -58,9 +58,14 @@ class CommandLineInterface
      Taco.find_by(kind: string)
   end
 
-  def update_taco(string)
-     Taco.update(kind: string)
-  end
+  # def update_taco(string)
+  #   StudentTaco.find do |taco|
+  #     taco.kind == string
+  #     taco.update(kind: string)
+  #   end
+  # end
+
+  # User.tacos
 
   def delete_taco(string)
     Taco.destroy(kind: string)
@@ -77,17 +82,18 @@ class CommandLineInterface
           taco_to_add = gets.chomp.capitalize
           found_student.tacos << find_taco(taco_to_add)
           puts "The taco has been added to #{found_student.name}'s order".yellow
-        elsif input == "update"
-          puts "What taco would you like to switch-out?"
-          found_student.tacos
-          binding.pry
-          puts "What taco would you like to order instead?"
-          show_taco_menu
-          puts "Please choose from the menu:"
-          taco_to_update = gets.chomp.capitalize
-          update_taco(taco_to_update)
-          binding.pry
-          puts "The taco has been updated to #{found_student.name}'s order".yellow
+        # elsif input == "switch-out"
+        #   puts "What taco would you like to switch-out?"
+        #   found_student.tacos
+        #   taco_to_switch = gets.chomp
+        #   binding.pry
+        #   puts "What taco would you like to order instead?"
+        #   show_taco_menu
+        #   puts "Please choose from the menu:"
+        #   taco_to_update = gets.chomp.capitalize
+        #   update_taco(taco_to_update)
+        #   binding.pry
+        #   puts "The taco has been updated to #{found_student.name}'s order".yellow
         elsif input == "delete"
           puts "What taco would you like to delete?"
           show_taco_menu
