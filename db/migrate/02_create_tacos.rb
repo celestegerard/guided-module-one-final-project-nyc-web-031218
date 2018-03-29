@@ -5,4 +5,6 @@ class CreateTacos < ActiveRecord::Migration[4.2]
     t.string :kind
     end
   end
+
+
 end

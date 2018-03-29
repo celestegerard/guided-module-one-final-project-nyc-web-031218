@@ -39,20 +39,3 @@ olivia.tacos << pescado
 olivia.tacos << black_bean
 clemence.tacos << chorizo
 clemence.tacos << barbacoa
-#
-# veggie.students << olivia
-# pescado.students << jesse
-# hawaiian.students << gordon
-# spicy.students << heathcliff
-# spicy.students << poppy
-# pescado.students << lyla
-
-# greased_lightning = TacoTruck.create(name: "Greased Lightening")
-# iced_earth = TacoTruck.create(name: "Iced Earth Tacos")
-# blue_thunder = TacoTruck.create(name: "Blue Thunder")
-# teddy_tacos = TacoTruck.create(name: "Teddy's Tacos")
-# juans_tacos = TacoTruck.create(name: "Juan's Tacos")
-# rodrigos_tacos = TacoTruck.create(name: "Rodrigo's Tacos")
-# pedros_tacos = TacoTruck.create(name: "Pedro's Tacos")
-# alejandros_tacos = TacoTruck.create(name: "Alejandro's Tacos")
-# cuban_b =

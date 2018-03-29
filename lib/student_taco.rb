@@ -1,6 +1,7 @@
-class TacoTruck < ActiveRecord::Base
+class StudentTaco < ActiveRecord::Base
 
   belongs_to :student
   belongs_to :taco
+
 
 end

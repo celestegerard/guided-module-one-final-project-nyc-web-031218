@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 3) do
 
-  create_table "students", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "taco_trucks", force: :cascade do |t|
+  create_table "student_tacos", force: :cascade do |t|
     t.string "name"
     t.integer "student_id"
     t.integer "taco_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "tacos", force: :cascade do |t|
