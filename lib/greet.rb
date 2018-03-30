@@ -27,7 +27,8 @@ class CommandLineInterface
 
   def find_student(gets_user_input)
     scholar = gets_user_input.capitalize
-    stud = Student.find_by(name: scholar)
+    Student.find_by(name: scholar)
+    # binding.pry
   end
 
   def student
@@ -67,40 +68,58 @@ class CommandLineInterface
 
   # User.tacos
 
-  def delete_taco(string)
+  def destroy_taco(string)
     Taco.destroy(kind: string)
   end
 
 
   def prompt_change(found_student)
-       puts "Would you like to add, switch-out, or delete a taco from the order?"
+       puts "Would you like to add, switch-out, or delete a taco from the order?".yellow
        input = gets.chomp
        if input == "add"
           puts "What taco would you like to add?"
           show_taco_menu
           puts "Please choose from the menu:"
-          taco_to_add = gets.chomp.capitalize
+          taco_to_add = gets.chomp
           found_student.tacos << find_taco(taco_to_add)
           puts "The taco has been added to #{found_student.name}'s order".yellow
-        # elsif input == "switch-out"
-        #   puts "What taco would you like to switch-out?"
-        #   found_student.tacos
-        #   taco_to_switch = gets.chomp
-        #   binding.pry
-        #   puts "What taco would you like to order instead?"
-        #   show_taco_menu
-        #   puts "Please choose from the menu:"
-        #   taco_to_update = gets.chomp.capitalize
-        #   update_taco(taco_to_update)
-        #   binding.pry
-        #   puts "The taco has been updated to #{found_student.name}'s order".yellow
+          puts "#{found_student.name}'s order is now:'"
+          puts found_student.tacos.map {|taco| taco.kind}
+        elsif input == "switch-out"
+          puts "What taco would you like to switch-out?"
+          puts "Please choose from the menu:"
+          show_taco_menu
+          taco_to_switch_delete = gets.chomp.capitalize
+          # found_student.tacos
+          binding.pry
+          found_student.tacos.each do |taco|
+            if taco.kind == taco_to_switch_delete
+              taco.destroy
+              break
+            end
+          puts "What taco would you like instead?"
+          show_taco_menu
+          puts "Please choose from the menu:"
+          taco_to_switch_add = gets.chomp
+          found_student.tacos << find_taco(taco_to_switch_add)
+          puts "#{found_student.name}'s order has been updated!".yellow
+          puts "#{found_student.name}'s order is now:'".yellow
+          puts found_student.tacos.map {|taco| taco.kind}
+        end
         elsif input == "delete"
-          puts "What taco would you like to delete?"
+          puts "What taco would you like to delete?".yellow
           show_taco_menu
           puts "Please choose from the menu:"
           taco_to_delete = gets.chomp.capitalize
-          found_student.tacos << destroy_taco(taco_to_add)
+          found_student.tacos.each do |taco|
+            if taco.kind == taco_to_delete
+              taco.destroy
+              break
+            end
+          end
           puts "The taco has been deleted to #{found_student.name}'s order".yellow
+          puts "#{found_student.name}'s order is now:'".yellow
+          puts found_student.tacos.map {|taco| taco.kind}
 
        elsif input == "no"
            "Thank you for using TacoFinder. Have a nice day!"
